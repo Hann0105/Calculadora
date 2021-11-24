@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -8,7 +9,6 @@
 
 body{
   /*background: linear-gradient(to right, #eae7ef, #eae7ef, #eae7ef);*/
-  background-color: #f1f2f6;
 }
 
 :root{
@@ -23,10 +23,14 @@ body{
  min-height: 100vh;
  align-items: center;
  justify-content: center;
+ background-color: #D9DCD6;
+ /*background: rgb(245,205,222);
+ background: radial-gradient(circle, rgba(245,205,222,1) 0%, rgba(51,75,103,0.09567577030812324) 100%);*/
 }
 
 .titulo{
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
   color: var(--dark);
 }
 
@@ -38,7 +42,7 @@ body{
 .display{
   padding: 16px;
   text-align: right;
-  background-color: #d8d3e2;
+  background-color: rgb(242, 239, 248);
   color: #060507;
   font-size: 24px;
   font-weight: 300;
@@ -78,6 +82,7 @@ button{
    display: flex;
  }
 
+
  .operadores button{
    flex: 1 1 0%;
    background-color:var(--primary);
@@ -93,6 +98,8 @@ button{
    flex-wrap: wrap;
  }
 
+
+
  .digitos button{
    flex: 1 1 33.33%;
    max-width: 33.33%;
@@ -101,4 +108,30 @@ button{
    margin-top: 2px;
   }
 
+  .digitos-aux{
+    display: flex;
+    margin-top: 4px;
+
+  }
+
+  .digitos-aux button{
+   flex: 1 1 0%;
+   background-color:var(--dark);
+   color: var(--light);
+   font-weight: 500;
+   margin-bottom: 5px;
+   border-radius: 16px;
+   margin-left: 2px;
+  }
+
+  .digitos-aux > #boton-color{
+    background-color: var(--primary);
+  }
+
+
+.fun-avanzadas{
+  width: 50%;
+  max-width: 200px;
+  margin-left: 3rem;
+}
 

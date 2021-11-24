@@ -1,4 +1,6 @@
+import React from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 
 function App() {
 
@@ -7,7 +9,7 @@ function App() {
 	const [resul, setResul] = useState("");
 
 	//Marca que operadores se utilizan
-	const ope = ['*', '+', '-', '/', '.'];
+	const ope = ['*', '+', '-', '/', '.', 'i'];
 
 	//Cada botón es un valor e imprime cuando se aprieta un botón
 	const updateCalc = valor => {
@@ -28,10 +30,22 @@ function App() {
 		
 	}
 
+	/*const numImaginarios = () =>{
+		let i = 
+	}*/
 
 	const calcularResul = () =>{
-		/*setCalc(eval(calc).toString());*/
-		setCurrentOperation(eval(calc).toString());
+		if (calc === ''){
+			swal({
+				title: "Error",
+				text: "No haz introducido ningún número",
+				icon: "warning",
+				button: "Volver"
+			}
+			);
+		}else{
+			setCurrentOperation(eval(calc).toString());
+		}
 	}
 
 
@@ -52,7 +66,7 @@ function App() {
 		setCurrentOperation(valor);
 	}*/
 
-	const eliminarTodo = () =>{
+	const eliminarTodo = () => {
 		if (calc == '' && calcularResul == '') {
 			return;
 		}else{
@@ -67,18 +81,22 @@ function App() {
 	}
 
 
+
+
 	//Función para crear los digitos del 9-1
-	const botonDigitos = () =>{
+	/*const botonDigitos = () =>{
 		const digitos = [];
 
 		for(let i = 9; i > 0; i--){
 			//El .push() agrega elementos al array
 			digitos.push(	
-				<button  onClick={() => updateCalc(i.toString())} key={i}>{i}</button>
+				<button className="digits" onClick={() => updateCalc(i.toString())} key={i}>{i}</button>
 			)
 		}
 		return digitos;
-	}
+	}*/
+
+
 
   return (
     <div className="App">
@@ -108,13 +126,27 @@ function App() {
 
 		  {/*Digitos */}
 		  <div className="digitos">
-			  {botonDigitos()}
-			  <button onClick={() => updateCalc('0')}>0</button>
-			  <button onClick={() => updateCalc('.')}>.</button>
-			  <button onClick={calcularResul}>=</button>
+		  <button onClick={() => updateCalc('7')}>7</button>
+		  <button onClick={() => updateCalc('8')}>8</button>
+		  <button onClick={() => updateCalc('9')}>9</button>
+		  <button onClick={() => updateCalc('4')}>4</button>
+		  <button onClick={() => updateCalc('5')}>5</button>
+		  <button onClick={() => updateCalc('6')}>6</button>
+		  <button onClick={() => updateCalc('1')}>1</button>
+		  <button onClick={() => updateCalc('2')}>2</button>
+		  <button onClick={() => updateCalc('3')}>3</button> 
 		  </div>
-
+		  <div className="digitos-aux">
+			  <button onClick={() => updateCalc('0')}>0</button>
+			  <button id="boton-color" onClick={() => updateCalc('.')}>.</button>
+			  <button  id="boton-color" onClick={() => updateCalc('i')}>i</button>
+			  <button  id="boton-color" onClick={calcularResul}>=</button>
+			</div>
+			
+			
 	  </div>
+
+	  
     </div>
   );
 }
