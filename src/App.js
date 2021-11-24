@@ -11,15 +11,15 @@ function App() {
 
 	//Cada botón es un valor e imprime cuando se aprieta un botón
 	const updateCalc = valor => {
-		if (
+		/*if (
 			//Si el valor es un operador y calc esta vacio
-			ope.includes(valor) && calc === '' ||
+			//ope.includes(valor) && calc === '' ||
 			//Si el valor es un Operador y si el ultimo es un operador -> no se hace nada
 			// .slice(-1) te devuelve u
 			ope.includes(valor) && ope.includes(calc.slice(-1))
 			) {
 			return;
-		}
+		}*/
 		setCalc(calc + valor);
 		//Si (el último) un valor no es un operador
 		if (!ope.includes(valor)) {
@@ -43,13 +43,27 @@ function App() {
 		setCalc(valor);
 	}
 
-	const eliminarResultado = () =>{
+	/*const eliminarResultado = () =>{
 		//si calcularResul no hay nada, regresa nada
 		if (calcularResul == ''){
 			return;
 		}
 		const valor = '';
 		setCurrentOperation(valor);
+	}*/
+
+	const eliminarTodo = () =>{
+		if (calc == '' && calcularResul == '') {
+			return;
+		}else{
+			const valor = '',
+				calcu = '',
+				resul = '';
+
+			setResul(valor);
+			setCurrentOperation(valor);
+			setCalc(valor);
+		}
 	}
 
 
@@ -78,7 +92,6 @@ function App() {
 			</div>
 			<div className="resultado-actual">
 				{resul ? currentOperation : ''}
-				HOLA HANNIA
 			</div>
 			
 		  </div>
@@ -89,7 +102,7 @@ function App() {
 			  <button onClick={() => updateCalc('+')}>+</button>
 			  <button onClick={() => updateCalc('-')}>-</button>
 			  <button onClick={() => updateCalc('/')}>/</button>
-			  <button onClick={eliminarResultado}>C</button>
+			  <button onClick={eliminarTodo}>C</button>
 			  <button onClick={eliminarUltimo}>DEL</button>
 		  </div>
 
