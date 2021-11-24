@@ -78,6 +78,7 @@ function App() {
 			</div>
 			<div className="resultado-actual">
 				{resul ? currentOperation : ''}
+				HOLA HANNIA
 			</div>
 			
 		  </div>
