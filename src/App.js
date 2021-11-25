@@ -9,19 +9,27 @@ function App() {
 	const [resul, setResul] = useState("");
 
 	//Marca que operadores se utilizan
-	const ope = ['*', '+', '-', '/', '.', 'i'];
+	const ope = ['*', '+', '-', '/', '.', 'i'],
+			ope1 = '/-',
+			ope2 = '/+';
 
 	//Cada botón es un valor e imprime cuando se aprieta un botón
 	const updateCalc = valor => {
-		/*if (
+		/*if (ope.includes(valor) && ope.includes(calc.slice(-1))){
+
+			if(console.log((calc.slice(-1) + valor) == ope1)){
+				return;
+			}
+			return;
+		}*/
+		
 			//Si el valor es un operador y calc esta vacio
 			//ope.includes(valor) && calc === '' ||
 			//Si el valor es un Operador y si el ultimo es un operador -> no se hace nada
 			// .slice(-1) te devuelve u
-			ope.includes(valor) && ope.includes(calc.slice(-1))
-			) {
-			return;
-		}*/
+			
+			 
+			
 		setCalc(calc + valor);
 		//Si (el último) un valor no es un operador
 		if (!ope.includes(valor)) {
@@ -35,7 +43,7 @@ function App() {
 	}*/
 
 	const calcularResul = () =>{
-		if (calc === ''){
+		if ((isNaN(calc) && /^(.)\1+$/.test(String(calc))) || (String(calc).length == 1 && ('' || '*'|| '+'|| '-'|| '/'|| '.'|| 'i')) || calc === ''){
 			swal({
 				title: "Error",
 				text: "No haz introducido ningún número",
@@ -116,7 +124,7 @@ function App() {
 
 		  {/*Operadores */}
 		  <div className="operadores">
-			  <button onClick={() => updateCalc('*')}>*</button>
+			  <button onClick={() => updateCalc('*')}>x</button>
 			  <button onClick={() => updateCalc('+')}>+</button>
 			  <button onClick={() => updateCalc('-')}>-</button>
 			  <button onClick={() => updateCalc('/')}>/</button>
