@@ -9,41 +9,23 @@ function App() {
 	const [resul, setResul] = useState("");
 
 	//Marca que operadores se utilizan
-	const ope = ['*', '+', '-', '/', '.', 'i'],
-			ope1 = '/-',
-			ope2 = '/+';
+	const ope = ['*', '+', '-', '/', '.'];
+
 
 	//Cada botón es un valor e imprime cuando se aprieta un botón
 	const updateCalc = valor => {
-		/*if (ope.includes(valor) && ope.includes(calc.slice(-1))){
-
-			if(console.log((calc.slice(-1) + valor) == ope1)){
-				return;
-			}
-			return;
-		}*/
-		
-			//Si el valor es un operador y calc esta vacio
-			//ope.includes(valor) && calc === '' ||
-			//Si el valor es un Operador y si el ultimo es un operador -> no se hace nada
-			// .slice(-1) te devuelve u
-			
-			 
-			
+		//Concatenar 
 		setCalc(calc + valor);
-		//Si (el último) un valor no es un operador
+		/*console.log(calc);
+		console.log(valor);*/
+		//Si un valor no es un operador
 		if (!ope.includes(valor)) {
 			setResul(eval(calc + valor).toString());
 		}
-		
 	}
 
-	/*const numImaginarios = () =>{
-		let i = 
-	}*/
-
 	const calcularResul = () =>{
-		if ((isNaN(calc) && /^(.)\1+$/.test(String(calc))) || (String(calc).length == 1 && ('' || '*'|| '+'|| '-'|| '/'|| '.'|| 'i')) || calc === ''){
+		if ((isNaN(calc) && /^(.)\1+$/.test(String(calc))) || (String(calc).length == 1 && ('' || '*'|| '+'|| '-'|| '/'|| '.')) || calc === ''){
 			swal({
 				title: "Error",
 				text: "No haz introducido ningún número",
@@ -52,7 +34,7 @@ function App() {
 			}
 			);
 		}else{
-			setCurrentOperation(eval(calc).toString());
+			setCurrentOperation(eval(resul).toString());
 		}
 	}
 
@@ -63,25 +45,15 @@ function App() {
 		}
 		const valor = calc.slice(0, -1);
 		setCalc(valor);
+		setResul(valor);
 	}
 
-	/*const eliminarResultado = () =>{
-		//si calcularResul no hay nada, regresa nada
-		if (calcularResul == ''){
-			return;
-		}
-		const valor = '';
-		setCurrentOperation(valor);
-	}*/
 
 	const eliminarTodo = () => {
 		if (calc == '' && calcularResul == '') {
 			return;
 		}else{
-			const valor = '',
-				calcu = '',
-				resul = '';
-
+			const valor = '';
 			setResul(valor);
 			setCurrentOperation(valor);
 			setCalc(valor);
@@ -147,7 +119,6 @@ function App() {
 		  <div className="digitos-aux">
 			  <button onClick={() => updateCalc('0')}>0</button>
 			  <button id="boton-color" onClick={() => updateCalc('.')}>.</button>
-			  <button  id="boton-color" onClick={() => updateCalc('i')}>i</button>
 			  <button  id="boton-color" onClick={calcularResul}>=</button>
 			</div>
 			
